@@ -1,3 +1,8 @@
+# Projenin Tanımı
+
+Twitter,Facebook, Ekşi Sözlük ve Letterboxd gibi sosyal medya platformlarından veri çekmeyi ve bu verileri görselleştirmeyi içerir. Kullanıcı, belirli bir sosyal medya platformunda belirli bir kullanıcı adına göre veya herhangi bir anahtar kelimeye göre veri analizi yapabilir.
+Projenin ana hedefi, farklı sosyal medya platformlarından veri çekme işlemlerini koordine etmek ve bu verileri kullanıcı dostu bir arayüzde görselleştirmektir. Bu amaçla, Flask kullanılarak bir web uygulaması oluşturuldu, Selenium kullanılarak web scraping işlemleri gerçekleştirildi ve elde edilen veriler Matplotlib kullanılarak görselleştirilmiştir.SMTP protokolü kullanılarak oluşturulan raporlar kullanıcıya e-mail olarak gönderilmesi de amaçlanmıştır
+
 # Projenin Aşamaları
 
 1. **Veri Toplama**: Bu aşamada, projenin amacına uygun olarak sosyal medya platformlarından (Twitter, Facebook, Ekşi Sözlük, Letterboxd vb.) veri toplanır. Bu veriler genellikle kullanıcılar veya belirli anahtar kelimeler üzerinden elde edilir.
