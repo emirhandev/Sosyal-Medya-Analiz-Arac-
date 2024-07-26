@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sosyal Medya Analiz Programı</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<header>
+  <h1>Sosyal Medya Analiz Programı</h1>
+</header>
+<div class="container">
+  <div class="buttons">
+  <button id="twitterBtn" class="mainBtn" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg'); width: 80px; height: 80px;"></button>
+<button id="facebookBtn" class="mainBtn" style="background-image: url('https://static-00.iconduck.com/assets.00/facebook-icon-512x512-7a4en82u.png'); background-size: cover; width: 80px; height: 80px;"></button>
+<button id="eksiBtn" class="mainBtn" style="background-image: url('https://play-lh.googleusercontent.com/K6d2JviWs_jeyWYWqyfCwjM27gJJwhojLCbOvoa-tYKbxFEIGAnhWdmZZWUpe2g4r6A'); background-size: cover; width: 80px; height: 80px;"></button>
+<button id="letterboxdBtn" class="mainBtn" style="background-image: url('https://play-lh.googleusercontent.com/PFcm5Ne2otuXxkCNgql_XtpHjYrlhIGGQRFaz9XLFg2wikmMP5YCv_OsvFe1PLDAvGg=w240-h480-rw'); background-size: cover; width: 80px; height: 80px;"></button>
+
+  </div>
+
+<div id="extraButtons" class="extraBtns">
+<button id="usernameBtn" class="extraBtn" style="background-color: blue; font-weight: bold; color: white; margin-right: 25px;">Kullanıcı Adı</button>
+  <button id="keywordBtn" class="extraBtn" style="background-color: green;font-weight:bold;color:white;margin-left: 5px;">Kelime</button>
+</div>
+
+
+  <div id="searchBox" class="searchBox">
+    <input type="text" id="searchInput" class="searchInput" placeholder="Arama yapın...">
+    <button id="searchBtn" class="searchBtn">Ara</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+  /* Genel stil */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  /* Header */
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  /* Container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  /* Butonlar */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .mainBtn, .extraBtn, .searchBtn {
+    padding: 20px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .mainBtn:hover, .extraBtn:hover, .searchBtn:hover {
+    opacity: 0.8;
+  }
+  /* Ekstra Butonlar */
+  .extraBtns {
+    display: none;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* Arama Kutusu */
+  .searchBox {
+    display: none;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  @media only screen and (max-width: 768px) {
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const mainButtons = document.querySelectorAll(".mainBtn");
+    const extraButtons = document.querySelector(".extraBtns");
+    const searchBox = document.querySelector(".searchBox");
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    let socialMediaPlatform = "";
+    let functionType = "";
+
+
+    mainButtons.forEach(btn => {
+      btn.addEventListener("click", function() {
+        extraButtons.style.display = "flex";
+        searchBox.style.display = "none";
+        searchInput.value = "";
+        searchBtn.style.backgroundColor = "";
+      });
+    });
+
+  document.getElementById("twitterBtn").addEventListener("click", function() {
+  searchBtn.style.backgroundColor = "black";
+  socialMediaPlatform = "Twitter";
+  document.getElementById("usernameBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").textContent = "Kelime";
+
+
+    });
+
+  document.getElementById("facebookBtn").addEventListener("click", function() {
+  searchBtn.style.backgroundColor = "#4267B2";
+  socialMediaPlatform = "Facebook";
+  document.getElementById("usernameBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").style.display = "none";
+
+
+
+    });
+
+  document.getElementById("eksiBtn").addEventListener("click", function() {
+  searchBtn.style.backgroundColor = "#81c04b";
+  socialMediaPlatform = "Eksi";
+  document.getElementById("usernameBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").textContent = "Konu";
+
+
+
+    });
+  document.getElementById("letterboxdBtn").addEventListener("click", function() {
+  searchBtn.style.backgroundColor = "#14181c";
+  socialMediaPlatform = "Letterboxd";
+  document.getElementById("usernameBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").style.display = "inline-block";
+  document.getElementById("keywordBtn").textContent = "Film Adı";
+
+
+
+    });
+
+    document.getElementById("usernameBtn").addEventListener("click", function() {
+    searchBox.style.display = "flex";
+    searchInput.placeholder = "Kullanıcı Adı Giriniz";
+    functionType = "Kullanici";
+
+
+    });
+
+    document.getElementById("keywordBtn").addEventListener("click", function() {
+    searchBox.style.display = "flex";
+    searchInput.placeholder = "Kelime Giriniz";
+    functionType = "Kelime";
+
+
+    });
+    document.getElementById("searchBtn").addEventListener("click", function() {
+    submitForm();
+    });
+
+ function submitForm() {
+    var searchData = searchInput.value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/submit", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ searchData: searchData, functionType: functionType, socialMediaPlatform: socialMediaPlatform }));
+    xhr.onload = function () {
+        if (xhr.status === 200 && xhr.responseText!="") {
+            console.log(xhr.responseText);
+        }
+    };
+}
+});
+
+</script>
+</body>
+</html>
